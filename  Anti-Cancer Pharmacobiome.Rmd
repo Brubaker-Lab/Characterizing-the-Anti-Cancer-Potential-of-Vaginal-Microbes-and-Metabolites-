@@ -111,27 +111,23 @@ Meph1_Metabolomics_RNA_1 <- read_excel("data/Inputs/Meph1_Metabolomics_RNA_1.xls
 Meph1_Met_R <- Meph1_Metabolomics_RNA_1[,-c(1,2,3)]
 Meph1_Met_R_Condition <- Meph1_Metabolomics_RNA_1[,-c(1)]
 Meph1_Met_R <- na.omit(Meph1_Met_R)
-#set dataset to strictly numeric
-colnames(Meph1_Met_R) <- NULL
-rownames(Meph1_Met_R) <- NULL
+
 
 Meph1_RNA_Met_Mbiome2 <- read_excel("data/Inputs/Meph1_RNA_Met_Mbiome2.xlsx")
 Meph1_Mbiome_R_M <- Meph1_RNA_Met_Mbiome2[,-c(1,2)]
 Meph1_Mbiome_R_M_Condition <- Meph1_RNA_Met_Mbiome2[,-c(1)]
 Meph1_Mbiome_R_M <- na.omit(Meph1_Mbiome_R_M)
-#set dataset to strictly numeric
-colnames(Meph1_Mbiome_R_M) <- NULL
-rownames(Meph1_Mbiome_R_M) <- NULL
+
 
 Meph1_RNA_1_Met <- read_excel("data/Inputs/Meph1_RNA_1_Met.xlsx")
 New_2 <- read_excel("data/Inputs/Meph1_RNA_2_Met.xlsx")
 Merged_RNA_Met <- merge(Meph1_RNA_1_Met,New_2, by = "xptid_visit_code", all = TRUE)
 colnames(Merged_RNA_Met) <- gsub('.x','',names(Merged_RNA_Met))
+Merged_RNA_Met <- Merged_RNA_Met[,-c(15003,15004)]
 Meph1_RNA_Met <- Merged_RNA_Met[order(Merged_RNA_Met$Lactobacillus_Dominance),]
-Meph1_RNA_Met <- Meph1_RNA_Met [,4:23485] 
+Meph1_RNA_Met <- Meph1_RNA_Met [,4:23484] 
 Meph1_RNA_Met_num <- na.omit(Meph1_RNA_Met)
-colnames(Meph1_RNA_Met_num) <- NULL
-rownames(Meph1_RNA_Met_num) <- NULL
+
 
 ```
 
